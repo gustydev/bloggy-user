@@ -5,6 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from './components/errorPage/ErrorPage.jsx';
 import Home from './components/home/Home.jsx';
+import Post from './components/post/Post.jsx'
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
     children: [
       { index: true, element: <Home/>},
-      // { path: 'post/:postId', element: <Post/> }
+      {path: 'post/:postId', element: <Post/> }
     ]
   }
 ])
