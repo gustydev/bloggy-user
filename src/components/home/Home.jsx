@@ -6,13 +6,15 @@ export default function Home() {
     const [error, setError] = useState(null)
     const [loadingPosts, setLoadingPosts] = useState(true)
     const [loadingComments, setLoadingComments] = useState(true);
+    const [page, setPage] = useState(1)
+    const limit = 5;
 
     useEffect(() => {
         let ignore = false;
 
         async function fetchPosts() {
             try {
-                const response = await fetch('https://cors-anywhere.herokuapp.com/https://bloggy.adaptable.app/api/v1/posts');
+                const response = await fetch(`https://cors-anywhere.herokuapp.com/https://bloggy.adaptable.app/api/v1/posts?page=${page}&limit=${limit}`);
                 const posts = await response.json();
 
                 if (!response.ok) {
@@ -35,7 +37,7 @@ export default function Home() {
         return () => {
             ignore = true;
         }
-    }, [])
+    }, [page])
 
     useEffect(() => {
         let ignore = false;
@@ -67,7 +69,7 @@ export default function Home() {
         }
     }, [])
 
-    console.log(posts, comments)
+    // console.log(posts, comments)
     
     if (error) {
         return 'A network error has occured.'
@@ -75,21 +77,31 @@ export default function Home() {
 
     return (
         <>
-        <div className="posts">
-            {loadingPosts ? 'Loading posts...' : (
-                posts.map((post) => {
-                    return <div key={post.id}>{post.title}</div> 
-                    // use a HomePost component
-                })
-            )}
+        <div className="left">
+            <div className="posts">
+                <h2>Posts</h2>
+                {loadingPosts ? 'Loading posts...' : (
+                    posts.map((post) => {
+                        return <div key={post.id}>{post.title}</div> 
+                        // use a HomePost component
+                    })
+                )}
+            </div>
+            <div className="pageNavigation">
+                {page > 1 ? <button onClick={() => {setPage(page - 1)}}>previous page</button> : ''}
+                {posts.length < limit ? '' : <button onClick={() => {setPage(page + 1)}}>next page</button>}
+            </div>
         </div>
-        <div className="recentComments">
-            {loadingComments ? 'Loading recent comments...' : (
-                comments.map((comment) => {
-                    return <div key={comment.id}>{comment.content}</div>
-                    // Use a HomeComment component
-                })
-            )}
+        <div className="right">
+            <div className="recentComments">
+                <h2>Recent comments</h2>
+                {loadingComments ? 'Loading recent comments...' : (
+                    comments.map((comment) => {
+                        return <div key={comment.id}>{comment.content}</div>
+                        // Use a HomeComment component
+                    })
+                )}
+            </div>
         </div>
         </>
     )

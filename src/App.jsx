@@ -6,7 +6,9 @@ function App() {
       <div className="topBar">
         <h1>Bloggy</h1>
       </div>
-      <Outlet></Outlet>
+      <div className="main">
+        <Outlet></Outlet>
+      </div>
     </>
   )
 }
