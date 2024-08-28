@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <div className="topBar">
-        <h1>Bloggy</h1>
+        <h1>bloggy</h1>
       </div>
       <div className="main">
         <Outlet></Outlet>
