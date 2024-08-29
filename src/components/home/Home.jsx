@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import HomePost from "./HomePost.jsx";
+import HomeComment from "./HomeComment.jsx";
 
 export default function Home() {
     const [posts, setPosts] = useState([]);
@@ -78,7 +79,7 @@ export default function Home() {
     }
 
     return (
-        <>
+        <div className='home'>
         <div className="left">
             <div className="posts">
                 <h2>posts</h2>
@@ -98,12 +99,11 @@ export default function Home() {
                 <h2>recent comments</h2>
                 {loadingComments ? 'loading recent comments...' : (
                     comments.map((comment) => {
-                        return <div key={comment.id}>{comment.content}</div>
-                        // Use a HomeComment component
+                        return <HomeComment key={comment.id} {...comment}></HomeComment>
                     })
                 )}
             </div>
         </div>
-        </>
+        </div>
     )
 }

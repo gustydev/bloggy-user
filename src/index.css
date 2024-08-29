@@ -1,7 +1,29 @@
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .topBar {
     border-bottom: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .post {
     margin-bottom: 8px;
+}
+
+.topBar > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.home {
+    display: flex;
+    justify-content: space-between;    
 }

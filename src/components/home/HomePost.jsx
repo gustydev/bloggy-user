@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
+import PropTypes from 'prop-types';
 
-export default function HomePost({ id, title, author, createdAt, content}) {
+function HomePost({ id, title, author, createdAt, content}) {
     return (
         <div className="post">
             <div className="title">
@@ -8,10 +9,21 @@ export default function HomePost({ id, title, author, createdAt, content}) {
                     {title}
                 </Link>
             </div>
-            <div className="author">{author.name}</div>
-            <div className="date">{new Date(createdAt).toLocaleString()}</div>
+            <div className="info">
+                {author.name}, {new Date(createdAt).toLocaleString()}
+            </div>
             <div className="content">{content}</div>
             {/* Later, truncate content */}
         </div>
     )
 }
+
+HomePost.propTypes = {
+    id: PropTypes.number,
+    title: PropTypes.string,
+    author: PropTypes.string,
+    createdAt: PropTypes.string,
+    content: PropTypes.string
+}
+
+export default HomePost;
