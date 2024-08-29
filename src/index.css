@@ -9,7 +9,7 @@ body {
     justify-content: space-between;
 }
 
-.post {
+.post, .comment {
     margin-bottom: 8px;
 }
 

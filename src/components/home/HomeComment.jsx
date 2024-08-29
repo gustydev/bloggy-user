@@ -2,6 +2,10 @@ import { Link } from "react-router-dom"
 import PropTypes from 'prop-types';
 
 function HomeComment({ author, content, createdAt, post, postId }) {
+    if (content.length > 100) {
+        content = content.substring(0, 100) + '(...)'
+    }
+
     return (
         <div className="comment">
             <div className="info">
@@ -13,7 +17,7 @@ function HomeComment({ author, content, createdAt, post, postId }) {
 }
 
 HomeComment.propTypes = {
-    id: PropTypes.string,
+    id: PropTypes.number,
     author: PropTypes.string,
     content: PropTypes.string,
     createdAt: PropTypes.string,

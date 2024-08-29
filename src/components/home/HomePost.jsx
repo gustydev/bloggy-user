@@ -2,9 +2,13 @@ import { Link } from "react-router-dom"
 import PropTypes from 'prop-types';
 
 function HomePost({ id, title, author, createdAt, content}) {
+    if (content.length > 500) {
+        content = content.substring(0, 500) + '(...)'
+    }
+    
     return (
         <div className="post">
-            <div className="title">
+            <div className="title" style={{fontWeight: 'bold'}}>
                 <Link to={`post/${id}`}>
                     {title}
                 </Link>
@@ -13,7 +17,6 @@ function HomePost({ id, title, author, createdAt, content}) {
                 {author.name}, {new Date(createdAt).toLocaleString()}
             </div>
             <div className="content">{content}</div>
-            {/* Later, truncate content */}
         </div>
     )
 }
@@ -21,7 +24,7 @@ function HomePost({ id, title, author, createdAt, content}) {
 HomePost.propTypes = {
     id: PropTypes.number,
     title: PropTypes.string,
-    author: PropTypes.string,
+    author: PropTypes.object,
     createdAt: PropTypes.string,
     content: PropTypes.string
 }

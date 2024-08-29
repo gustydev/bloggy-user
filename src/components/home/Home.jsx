@@ -47,7 +47,7 @@ export default function Home() {
 
         async function fetchComments() {
             try {
-                const response = await fetch('https://cors-anywhere.herokuapp.com/https://bloggy.adaptable.app/api/v1/comments?limit=3&sort=desc');
+                const response = await fetch('https://cors-anywhere.herokuapp.com/https://bloggy.adaptable.app/api/v1/comments?limit=5&sort=desc');
                 const comments = await response.json();
 
                 if (!response.ok) {
@@ -71,8 +71,6 @@ export default function Home() {
             ignore = true;
         }
     }, [])
-
-    console.log(posts)
     
     if (error) {
         return 'A network error has occured.'

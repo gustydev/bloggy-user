@@ -6,6 +6,40 @@ export default function Post() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const { postId } = useParams();
+    const [commentData, setCommentData] = useState({
+        author: '',
+        content: ''
+    })
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setCommentData((prevCommentData) => ({
+          ...prevCommentData,
+          [name]: value,
+        }));
+    };
+
+    async function postComment(e) {
+        e.preventDefault();
+
+        try {
+            const response = await fetch(`https://cors-anywhere.herokuapp.com/https://bloggy.adaptable.app/api/v1/posts/${postId}/comment`, {
+                method: 'post',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "author": commentData.author || 'Anonymous',
+                    "content": commentData.content
+                })
+            })
+            await response.json();            
+        } catch (error) {
+            console.error(error)
+        } finally {
+            location.reload() // Refresh page
+        }
+    }
 
     useEffect(() => {
         let ignore = false;
@@ -46,29 +80,34 @@ export default function Post() {
         return 'a network error has occured'
     }
 
-    console.log(post)
-
     return (
         <>
         <div className="post">
             <h2 className="title">{post.title}</h2>
             <h3 className='subtitle'>{post.subtitle}</h3>
-            <div className="content">{post.content}</div>
             <div className="info">{post.author.name}, {new Date(post.createdAt).toLocaleString()}</div>
+            <div className="content">{post.content}</div>
         </div>
         <div className="comments">
             <h2>comments</h2>
             {post.comments.map((comment) => {
                 return (
                     <div className="comment" key={comment.id}>
-                        <div className="commentAuthor">{comment.author}</div>
-                        <div className="commentDate">{new Date(comment.createdAt).toLocaleString()}</div>
+                        <div className="info">
+                            {comment.author} ({new Date(comment.createdAt).toLocaleString()}):
+                        </div>
                         <div className="commentContent">{comment.content}</div>
                     </div>
                     // later add form to post a comment
                 )
             })}
         </div>
+        <form onSubmit={(e) => { postComment(e) }}>
+            <label htmlFor="author"></label>
+            <input type="text" id='author' name='author' placeholder='author (optional)' onChange={handleInputChange}/>
+            <textarea name="content" id="content" placeholder="your comment goes here" onChange={handleInputChange}></textarea>
+            <input type="submit" value="Submit" />
+        </form>
         </>
     )
 }
