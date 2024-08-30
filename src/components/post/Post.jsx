@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import CommentSection from "./CommentSection";
+import CommentForm from "./CommentForm";
+import PostDetails from "./PostDetails";
 
 export default function Post() {
     const [post, setPost] = useState(null)
@@ -20,9 +23,8 @@ export default function Post() {
     };
 
     async function postComment(e) {
-        e.preventDefault();
-
         try {
+            e.preventDefault();
             const response = await fetch(`https://cors-anywhere.herokuapp.com/https://bloggy.adaptable.app/api/v1/posts/${postId}/comment`, {
                 method: 'post',
                 headers: {
@@ -82,32 +84,9 @@ export default function Post() {
 
     return (
         <>
-        <div className="post">
-            <h2 className="title">{post.title}</h2>
-            <h3 className='subtitle'>{post.subtitle}</h3>
-            <div className="info">{post.author.name}, {new Date(post.createdAt).toLocaleString()}</div>
-            <div className="content">{post.content}</div>
-        </div>
-        <div className="comments">
-            <h2>comments</h2>
-            {post.comments.map((comment) => {
-                return (
-                    <div className="comment" key={comment.id}>
-                        <div className="info">
-                            {comment.author} ({new Date(comment.createdAt).toLocaleString()}):
-                        </div>
-                        <div className="commentContent">{comment.content}</div>
-                    </div>
-                    // later add form to post a comment
-                )
-            })}
-        </div>
-        <form onSubmit={(e) => { postComment(e) }}>
-            <label htmlFor="author"></label>
-            <input type="text" id='author' name='author' placeholder='author (optional)' onChange={handleInputChange}/>
-            <textarea name="content" id="content" placeholder="your comment goes here" onChange={handleInputChange}></textarea>
-            <input type="submit" value="Submit" />
-        </form>
+            <PostDetails post={post}></PostDetails>
+            <CommentSection comments={post.comments}></CommentSection>
+            <CommentForm commentData={commentData} handleInputChange={handleInputChange} postComment={postComment}></CommentForm>
         </>
     )
 }
