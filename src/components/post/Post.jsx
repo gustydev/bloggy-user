@@ -86,8 +86,10 @@ export default function Post() {
     return (
         <div className={styles.main}>
             <PostDetails post={post}></PostDetails>
-            <CommentSection comments={post.comments}></CommentSection>
-            <CommentForm commentData={commentData} handleInputChange={handleInputChange} postComment={postComment}></CommentForm>
+            <div className="commentContainer">
+                <CommentSection comments={post.comments}></CommentSection>
+                <CommentForm commentData={commentData} handleInputChange={handleInputChange} postComment={postComment}></CommentForm>
+            </div>
         </div>
     )
 }

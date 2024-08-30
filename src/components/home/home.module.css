@@ -1,12 +1,12 @@
 .post, .comment {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 }
 
 .home {
     display: grid;
     grid-template-columns: 3fr 1fr;
     height: 100%;
-    margin-top: 32px;
+    gap: 32px;
 }
 
 .pageNav {

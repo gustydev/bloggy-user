@@ -9,7 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 0px 36px;
+    padding: 0px 72px;
 }
 
 .topBar {

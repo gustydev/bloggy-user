@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import styles from './comment.module.css'
+import styles from './post.module.css'
 
 export default function CommentSection( { comments }) {
     return (
