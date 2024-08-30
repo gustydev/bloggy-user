@@ -1,7 +1,7 @@
 .main {
-    display: flex;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
     flex-direction: column;
-    justify-content: space-between;
     height: 100vh;
 }
 
@@ -17,6 +17,7 @@
 
 .post > .content {
     margin-top: 16px;
+    height: 100%;
 }
 
 .post {
@@ -24,9 +25,18 @@
     flex-direction: column;
 }
 
-.info {
+.post > .info {
+    display: flex;
+    flex-direction: column;
     margin-top: 16px;
     align-self: end;
+    align-items: end;
+    justify-self: end;
+}
+
+.updatedAt {
+    font-size: 14px;
+    /* font-style: italic; */
 }
 
 .comments > * {

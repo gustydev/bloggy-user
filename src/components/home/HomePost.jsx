@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 import PropTypes from 'prop-types';
 import styles from './home.module.css'
 
-function HomePost({ id, title, author, createdAt, content}) {
-    if (content.length > 500) {
-        content = content.substring(0, 500) + '(...)'
+function HomePost({ id, title, author, createdAt, content }) {
+    if (content.length > 1000) {
+        content = content.substring(0, 1000) + '(...)'
     }
 
     if (title.length > 100) {
