@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import CommentSection from "./CommentSection";
 import CommentForm from "./CommentForm";
 import PostDetails from "./PostDetails";
+import styles from './post.module.css'
 
 export default function Post() {
     const [post, setPost] = useState(null)
@@ -83,10 +84,10 @@ export default function Post() {
     }
 
     return (
-        <>
+        <div className={styles.main}>
             <PostDetails post={post}></PostDetails>
             <CommentSection comments={post.comments}></CommentSection>
             <CommentForm commentData={commentData} handleInputChange={handleInputChange} postComment={postComment}></CommentForm>
-        </>
+        </div>
     )
 }

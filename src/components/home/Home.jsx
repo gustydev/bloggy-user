@@ -81,7 +81,6 @@ export default function Home() {
         <div className={styles.home}>
           <div className={styles.left}>
             <div className={styles.posts}>
-                <h2>posts</h2>
                 {loadingPosts ? 'loading posts...' : (
                     posts.map((post) => {
                         return <HomePost key={post.id} {...post}></HomePost>
@@ -89,8 +88,8 @@ export default function Home() {
                 )}
             </div>
             <div className={styles.pageNav}>
-                {page > 1 ? <button className={styles.newer} onClick={() => {setPage(page - 1)}}>load newer posts</button> : ''}
-                {posts.length < limit ? '' : <button className={styles.older} onClick={() => {setPage(page + 1)}}>load older posts</button>}
+                {page > 1 ? <button className={styles.newer} onClick={() => {setPage(page - 1)}}>show newer posts</button> : ''}
+                {posts.length < limit ? '' : <button className={styles.older} onClick={() => {setPage(page + 1)}}>show older posts</button>}
             </div>
           </div>
           <div className={styles.right}>

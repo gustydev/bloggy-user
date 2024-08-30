@@ -4,10 +4,10 @@ export default function CommentForm( {commentData, handleInputChange, postCommen
     return (
         <form onSubmit={(e) => { postComment(e) }}>
             <label htmlFor="author"></label>
-            <input type="text" id='author' name='author' placeholder='author (optional)' value={commentData.author} onChange={handleInputChange}/>
-            <textarea name="content" id="content" placeholder="your comment goes here" value={commentData.content} onChange={handleInputChange}></textarea>
+            <input type="text" id='author' name='author' placeholder='name (optional)' value={commentData.author} onChange={handleInputChange}/>
+            <textarea name="content" id="content" placeholder="leave a comment..." value={commentData.content} onChange={handleInputChange}></textarea>
             <input type="submit" value="Submit" />
-    </form>
+        </form>
     )   
 }
 

@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
+import styles from './comment.module.css'
 
 export default function CommentSection( { comments }) {
     return (
-        <div className="comments">
+        <div className={styles.comments}>
             <h2>comments</h2>
             {comments.map((comment) => {
                 return (
-                    <div className="comment" key={comment.id}>
-                        <div className="info">
+                    <div className={styles.comment} key={comment.id}>
+                        <div className={styles.info}>
                             {comment.author} ({new Date(comment.createdAt).toLocaleString()}):
                         </div>
-                        <div className="commentContent">{comment.content}</div>
+                        <div className={styles.content}>{comment.content}</div>
                     </div>
                 )
             })}

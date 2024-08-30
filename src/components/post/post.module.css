@@ -1,0 +1,28 @@
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin-bottom: 0;
+}
+
+.subtitle {
+    margin-top: 0px;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.content {
+    margin-top: 16px;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    margin-top: 16px;
+    align-self: end;
+}
