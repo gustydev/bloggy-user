@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom"
 import PropTypes from 'prop-types';
+import styles from './home.module.css'
 
 function HomePost({ id, title, author, createdAt, content}) {
     if (content.length > 500) {
         content = content.substring(0, 500) + '(...)'
     }
+
+    if (title.length > 100) {
+        title = title.substring(0, 100) + '(...)'
+    }
     
     return (
-        <div className="post">
+        <div className={styles.post}>
             <div className="title" style={{fontWeight: 'bold'}}>
                 <Link to={`post/${id}`}>
                     {title}

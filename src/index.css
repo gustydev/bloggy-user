@@ -1,5 +1,15 @@
 body {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0px 36px;
 }
 
 .topBar {
@@ -9,21 +19,14 @@ body {
     justify-content: space-between;
 }
 
-.post, .comment {
-    margin-bottom: 8px;
-}
-
 .topBar > ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
 }
 
-.home {
-    display: flex;
-    justify-content: space-between;    
+a {
+    text-decoration: none;
 }

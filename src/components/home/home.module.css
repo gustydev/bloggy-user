@@ -1,0 +1,35 @@
+.post, .comment {
+    margin-bottom: 8px;
+}
+
+.home {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    height: 100%;
+}
+
+.pageNav {
+    display: grid;
+    padding: 16px;
+    gap: 8px;
+}
+
+.pageNav > button {
+    /* width: 20%; */
+}
+
+.newer {
+    grid-column: 1 / 2;
+    justify-self: end;
+}
+
+.older {
+    grid-column: 2 / 3;
+    justify-self: start;
+}
+
+.left, .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

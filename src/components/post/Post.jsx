@@ -31,7 +31,7 @@ export default function Post() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    "author": commentData.author || 'Anonymous',
+                    "author": commentData.author,
                     "content": commentData.content
                 })
             })

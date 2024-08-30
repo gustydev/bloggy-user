@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import HomePost from "./HomePost.jsx";
 import HomeComment from "./HomeComment.jsx";
+import styles from './home.module.css'
 
 export default function Home() {
     const [posts, setPosts] = useState([]);
@@ -77,9 +78,9 @@ export default function Home() {
     }
 
     return (
-        <div className='home'>
-        <div className="left">
-            <div className="posts">
+        <div className={styles.home}>
+          <div className={styles.left}>
+            <div className={styles.posts}>
                 <h2>posts</h2>
                 {loadingPosts ? 'loading posts...' : (
                     posts.map((post) => {
@@ -87,13 +88,13 @@ export default function Home() {
                     })
                 )}
             </div>
-            <div className="pageNavigation">
-                {page > 1 ? <button onClick={() => {setPage(page - 1)}}>load newer posts</button> : ''}
-                {posts.length < limit ? '' : <button onClick={() => {setPage(page + 1)}}>load older posts</button>}
+            <div className={styles.pageNav}>
+                {page > 1 ? <button className={styles.newer} onClick={() => {setPage(page - 1)}}>load newer posts</button> : ''}
+                {posts.length < limit ? '' : <button className={styles.older} onClick={() => {setPage(page + 1)}}>load older posts</button>}
             </div>
-        </div>
-        <div className="right">
-            <div className="recentComments">
+          </div>
+          <div className={styles.right}>
+            <div className={styles.recentComments}>
                 <h2>recent comments</h2>
                 {loadingComments ? 'loading recent comments...' : (
                     comments.map((comment) => {
@@ -101,7 +102,7 @@ export default function Home() {
                     })
                 )}
             </div>
-        </div>
+          </div>
         </div>
     )
 }
