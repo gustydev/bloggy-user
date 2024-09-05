@@ -2,21 +2,16 @@ import { Link } from "react-router-dom"
 import PropTypes from 'prop-types';
 import styles from './home.module.css'
 
-function HomeComment({ author, content, createdAt, post, postId }) {
-    if (content.length > 100) {
-        content = content.substring(0, 100) + '(...)'
-    }
-
-    if (post.title.length > 20) {
-        post.title = post.title.substring(0, 20) + '(...)'
-    }
-
+function HomeComment({ author, content, createdAt, updatedAt, post, postId }) {
+    const truncatedContent = content.length > 50 ? content.substring(0, 50) + '(...)' : content;
+    const truncatedTitle = post.title.length > 20 ? post.title.substring(0, 20) + '(...)' : post.title;    
+    
     return (
         <div className={styles.comment}>
             <div className="info">
-                {author} @ <Link to={`/post/${postId}`}>{post.title}</Link> ({new Date(createdAt).toLocaleString()}):
+            {author} @ <Link to={`/post/${postId}`}>{truncatedTitle}</Link> ({createdAt === updatedAt ? new Date(createdAt).toLocaleString() : 'updated ' + new Date(updatedAt).toLocaleString()}):
             </div>
-            <div className="content">{content}</div>
+            <div className="content">{truncatedContent}</div>
         </div>
     )
 }
@@ -26,6 +21,7 @@ HomeComment.propTypes = {
     author: PropTypes.string,
     content: PropTypes.string,
     createdAt: PropTypes.string,
+    updatedAt: PropTypes.string,
     post: PropTypes.object,
     postId: PropTypes.number
 }

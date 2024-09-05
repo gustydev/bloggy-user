@@ -85,11 +85,16 @@ export default function Post() {
 
     return (
         <div className={styles.main}>
-            <PostDetails post={post}></PostDetails>
-            <div className="commentContainer">
-                <CommentSection comments={post.comments}></CommentSection>
-                <CommentForm commentData={commentData} handleInputChange={handleInputChange} postComment={postComment}></CommentForm>
-            </div>
+            {post.published ? (
+                <>
+                <PostDetails post={post}></PostDetails>
+                <div className="commentContainer">
+                    <CommentSection comments={post.comments}></CommentSection>
+                    <CommentForm commentData={commentData} handleInputChange={handleInputChange} postComment={postComment}></CommentForm>
+                </div>
+                </>
+            ) : <p><strong>Error</strong>: this post is not published. Check again later.</p>}
+            
         </div>
     )
 }

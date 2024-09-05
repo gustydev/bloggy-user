@@ -10,7 +10,7 @@ export default function Home() {
     const [loadingPosts, setLoadingPosts] = useState(true)
     const [loadingComments, setLoadingComments] = useState(true);
     const [page, setPage] = useState(1)
-    const limit = 4;
+    const limit = 7;
 
     useEffect(() => {
         let ignore = false;
@@ -83,7 +83,7 @@ export default function Home() {
             <div className={styles.posts}>
                 {loadingPosts ? 'loading posts...' : (
                     posts.map((post) => {
-                        return <HomePost key={post.id} {...post}></HomePost>
+                        return post.published && <HomePost key={post.id} {...post}/>
                     })
                 )}
             </div>
@@ -97,7 +97,7 @@ export default function Home() {
                 <h2>recent comments</h2>
                 {loadingComments ? 'loading recent comments...' : (
                     comments.map((comment) => {
-                        return <HomeComment key={comment.id} {...comment}></HomeComment>
+                        return comment.post.published && <HomeComment key={comment.id} {...comment}></HomeComment>
                     })
                 )}
             </div>

@@ -1,20 +1,12 @@
 import PropTypes from 'prop-types';
 import styles from './post.module.css'
+import Comment from './Comment';
 
 export default function CommentSection( { comments }) {
     return (
         <div className={styles.comments}>
             <h2>comments</h2>
-            {comments.map((comment) => {
-                return (
-                    <div className={styles.comment} key={comment.id}>
-                        <div className={styles.info}>
-                            {comment.author} ({new Date(comment.createdAt).toLocaleString()}):
-                        </div>
-                        <div className={styles.content}>{comment.content}</div>
-                    </div>
-                )
-            })}
+            {comments.map((comment) => <Comment key={comment.id} comment={comment}/>)}
         </div>
     )
 }

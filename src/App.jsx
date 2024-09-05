@@ -1,21 +1,10 @@
 import { Outlet } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import TopBar from './components/TopBar';
 
 function App() {
   return (
     <>
-      <div className="topBar">
-        <h1>bloggy</h1>
-        <ul>
-          <li>
-            <Link to='/'>home</Link>
-          </li>
-          <li>
-            <a href="/admin">admin</a>
-            {/* later replace link with admin website */}
-          </li>
-        </ul>
-      </div>
+      <TopBar/>
       <Outlet></Outlet>
     </>
   )

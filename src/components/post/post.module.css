@@ -1,6 +1,6 @@
 .main {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
     flex-direction: column;
     height: 100vh;
 }
@@ -18,6 +18,10 @@
 .post > .content {
     margin-top: 16px;
     height: 100%;
+}
+
+.content, .comment {
+    white-space: pre-wrap;
 }
 
 .post {
@@ -39,12 +43,38 @@
     /* font-style: italic; */
 }
 
+.comment {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(88, 88, 88);
+    padding: 8px;
+}
+
 .comments > * {
     margin-bottom: 16px;
 }
 
 .comment > .info {
     font-weight: 600;
+}
+
+.commentId {
+    grid-column: 2 / 3;
+    justify-self: end;
+}
+
+.tinyInfo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    justify-content: space-between;
+    margin-top: 16px;
+    font-size: 12px;
+}
+
+.commentUpdated {
+    grid-column: 1 / 2;
 }
 
 form {
