@@ -6,6 +6,7 @@ import PostDetails from "./PostDetails";
 import styles from './post.module.css'
 import { createResource } from "../../utils/crudOperations";
 import { apiRequest } from "../../utils/api";
+import { API_URL } from "../../utils/config";
 
 export default function Post() {
     const [post, setPost] = useState(null)
@@ -42,7 +43,7 @@ export default function Post() {
         async function fetchPost() {
             setLoading(true);
             try {
-                const post = await apiRequest(`https://cors-anywhere.herokuapp.com/https://bloggy.adaptable.app/api/v1/posts/${postId}`);
+                const post = await apiRequest(`${API_URL}/v1/posts/${postId}`);
                 setPost(post);
             } catch (error) {
                 console.error(error)

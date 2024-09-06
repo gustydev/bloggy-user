@@ -3,6 +3,7 @@ import HomePost from "./HomePost.jsx";
 import HomeComment from "./HomeComment.jsx";
 import styles from './home.module.css'
 import { apiRequest } from "../../utils/api.js";
+import { API_URL } from "../../utils/config"
 
 export default function Home() {
     const [posts, setPosts] = useState([]);
@@ -19,7 +20,7 @@ export default function Home() {
         async function fetchPosts() {
             setLoadingPosts(true)
             try {
-                const posts = await apiRequest(`https://cors-anywhere.herokuapp.com/https://bloggy.adaptable.app/api/v1/posts?page=${page}&limit=${limit}`);
+                const posts = await apiRequest(`${API_URL}/posts?page=${page}&limit=${limit}`);
                 setPosts(posts);
             } catch (error) {
                 setError(error)
@@ -43,7 +44,7 @@ export default function Home() {
 
         async function fetchComments() {
             try {
-                const comments = await apiRequest('https://cors-anywhere.herokuapp.com/https://bloggy.adaptable.app/api/v1/comments?limit=5&sort=desc');
+                const comments = await apiRequest(`${API_URL}/comments?limit=5&sort=desc`);
                 setComments(comments);
             } catch (error) {
                 setError(error)
