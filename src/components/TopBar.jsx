@@ -11,7 +11,6 @@ export default function TopBar() {
           <li>
             |&nbsp;
             <a href="https://bloggy-admin.pages.dev">admin</a>
-            {/* later replace link with admin website */}
           </li>
         </ul>
       </div>

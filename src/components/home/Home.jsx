@@ -4,6 +4,7 @@ import HomeComment from "./HomeComment.jsx";
 import styles from './home.module.css'
 import { apiRequest } from "../../utils/api.js";
 import { API_URL } from "../../utils/config"
+import Pagination from "./Pagination.jsx";
 
 export default function Home() {
     const [posts, setPosts] = useState([]);
@@ -14,13 +15,17 @@ export default function Home() {
     const [page, setPage] = useState(1)
     const limit = 4;
 
+    const handlePostPageChange = (increment) => {
+        setPage((prev) => prev + increment);
+    };
+    
     useEffect(() => {
         let ignore = false;
 
         async function fetchPosts() {
             setLoadingPosts(true)
             try {
-                const posts = await apiRequest(`${API_URL}/posts?page=${page}&limit=${limit}`);
+                const posts = await apiRequest(`${API_URL}/posts?page=${page}&limit=${limit}&published=true`);
                 setPosts(posts);
             } catch (error) {
                 setError(error)
@@ -73,13 +78,12 @@ export default function Home() {
             <div className={styles.posts}>
                 {loadingPosts ? 'loading posts...' : (
                     posts.map((post) => {
-                        return post.published && <HomePost key={post.id} {...post}/>
+                        return <HomePost key={post.id} {...post}/>
                     })
                 )}
             </div>
             <div className={styles.pageNav}>
-                {page > 1 ? <button className={styles.newer} onClick={() => {setPage(page - 1)}}>show newer posts</button> : ''}
-                {posts.length < limit ? '' : <button className={styles.older} onClick={() => {setPage(page + 1)}}>show older posts</button>}
+                <Pagination currentPage={page} totalItems={posts.length} limit={limit} onPageChange={handlePostPageChange}/>
             </div>
           </div>
           <div className={styles.right}>
