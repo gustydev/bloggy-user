@@ -2,6 +2,26 @@
     margin-bottom: 16px;
 }
 
+.post {
+    white-space: pre-wrap;
+    display: flex;
+    flex-direction: column;
+}
+
+.subtitle {
+    margin-top: 0px;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.bottomInfo {
+    display: flex;
+    flex-direction: column;
+    justify-self: end;
+    align-self: end;
+    align-items: end;
+}
+
 .home {
     display: grid;
     grid-template-columns: 3fr 1fr;

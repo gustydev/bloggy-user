@@ -10,7 +10,7 @@ export default function Home() {
     const [loadingPosts, setLoadingPosts] = useState(true)
     const [loadingComments, setLoadingComments] = useState(true);
     const [page, setPage] = useState(1)
-    const limit = 7;
+    const limit = 4;
 
     useEffect(() => {
         let ignore = false;
