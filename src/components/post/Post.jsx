@@ -43,7 +43,7 @@ export default function Post() {
         async function fetchPost() {
             setLoading(true);
             try {
-                const post = await apiRequest(`${API_URL}/v1/posts/${postId}`);
+                const post = await apiRequest(`${API_URL}/posts/${postId}`);
                 setPost(post);
             } catch (error) {
                 console.error(error)

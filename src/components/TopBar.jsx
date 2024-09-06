@@ -10,7 +10,7 @@ export default function TopBar() {
           </li>
           <li>
             |&nbsp;
-            <a href="https://bloggy-admin.adaptable.app">admin</a>
+            <a href="https://bloggy-admin.pages.dev">admin</a>
             {/* later replace link with admin website */}
           </li>
         </ul>
